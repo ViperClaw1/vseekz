@@ -1,13 +1,19 @@
 import { Controller, Get, NotFoundException, Param, Query } from "@nestjs/common";
+import { ApiQuery, ApiTags } from "@nestjs/swagger";
+import { ApiNotFound, ApiOk } from "../../openapi.ts";
 import { PrismaService } from "../../prisma/prisma.service.ts";
+import { Master, ServiceCategory } from "../../schemas.ts";
 
+@ApiTags("salons")
 @Controller("venues/:id")
 export class SalonsController {
   constructor(private readonly prisma: PrismaService) {}
 
   // GET /venues/:id/services → категории услуг с услугами
   @Get("services")
-  async services(@Param("id") id: string) {
+  @ApiOk(ServiceCategory, { array: true })
+  @ApiNotFound("Салон не найден")
+  async getServices(@Param("id") id: string) {
     const venue = await this.prisma.venue.findUnique({
       where: { id, type: "SALON" },
       select: {
@@ -27,7 +33,10 @@ export class SalonsController {
 
   // GET /venues/:id/masters?serviceIds=a,b → мастера, которые делают ВСЕ выбранные услуги
   @Get("masters")
-  async masters(@Param("id") id: string, @Query("serviceIds") serviceIds?: string) {
+  @ApiQuery({ name: "serviceIds", required: false, description: "id услуг через запятую" })
+  @ApiOk(Master, { array: true })
+  @ApiNotFound("Салон не найден")
+  async getMasters(@Param("id") id: string, @Query("serviceIds") serviceIds?: string) {
     const ids = serviceIds?.split(",").map((s) => s.trim()).filter(Boolean) ?? [];
 
     const venue = await this.prisma.venue.findUnique({ where: { id, type: "SALON" }, select: { id: true } });

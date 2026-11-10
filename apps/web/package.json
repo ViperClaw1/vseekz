@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "5.90.2",
+    "@vsee/api-client": "workspace:*",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.5.2",
     "lucide-react": "^1.70.0",

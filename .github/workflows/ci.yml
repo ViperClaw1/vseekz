@@ -46,6 +46,13 @@ jobs:
       - name: Typecheck, lint, unit tests, build
         run: pnpm turbo run typecheck lint test build
 
+      - name: API client is up to date (OpenAPI + orval)
+        run: |
+          pnpm --filter @vsee/api openapi
+          pnpm --filter @vsee/api-client generate
+          git add -N packages/api-client
+          git diff --exit-code -- packages/api-client || { echo "::error::Клиент устарел: запусти pnpm api:generate и закоммить"; exit 1; }
+
       - name: Apply migrations
         working-directory: apps/api
         run: pnpm exec prisma migrate deploy

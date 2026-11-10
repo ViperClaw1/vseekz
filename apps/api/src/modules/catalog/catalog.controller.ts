@@ -1,13 +1,19 @@
 import { Controller, Get, NotFoundException, Param } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
+import { ApiNotFound, ApiOk } from "../../openapi.ts";
 import { PrismaService } from "../../prisma/prisma.service.ts";
+import { MenuCategory, Product } from "../../schemas.ts";
 
+@ApiTags("catalog")
 @Controller()
 export class CatalogController {
   constructor(private readonly prisma: PrismaService) {}
 
   // GET /venues/:id/menu → категории с блюдами и модификаторами
   @Get("venues/:id/menu")
-  async menu(@Param("id") id: string) {
+  @ApiOk(MenuCategory, { array: true })
+  @ApiNotFound("Ресторан не найден")
+  async getMenu(@Param("id") id: string) {
     const venue = await this.prisma.venue.findUnique({
       where: { id, type: "RESTAURANT" },
       select: {
@@ -31,7 +37,9 @@ export class CatalogController {
 
   // GET /products/:id/related → «Вам может понравиться»: другие доступные блюда того же ресторана
   @Get("products/:id/related")
-  async related(@Param("id") id: string) {
+  @ApiOk(Product, { array: true })
+  @ApiNotFound("Блюдо не найдено")
+  async getRelatedProducts(@Param("id") id: string) {
     const product = await this.prisma.product.findUnique({ where: { id }, select: { venueId: true } });
     if (!product) throw new NotFoundException("Блюдо не найдено");
     return this.prisma.product.findMany({

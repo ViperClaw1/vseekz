@@ -1,15 +1,23 @@
 import { Controller, Get, NotFoundException, Param, ParseEnumPipe, Query } from "@nestjs/common";
+import { ApiQuery, ApiTags } from "@nestjs/swagger";
 import { VenueType } from "../../generated/prisma/client.ts";
+import { ApiBadRequest, ApiNotFound, ApiOk } from "../../openapi.ts";
 import { PrismaService } from "../../prisma/prisma.service.ts";
+import { Venue, VenueListItem } from "../../schemas.ts";
 
+@ApiTags("venues")
 @Controller("venues")
 export class VenuesController {
   constructor(private readonly prisma: PrismaService) {}
 
-  // GET /venues?type=RESTAURANT&q=пицца&city=Bishkek
   // ponytail: без пагинации и pg_trgm — заведений единицы; курсор и trgm-индекс, когда их станут сотни.
   @Get()
-  list(
+  @ApiQuery({ name: "type", required: false, enum: VenueType, enumName: "VenueType" })
+  @ApiQuery({ name: "q", required: false, description: "Поиск по названию" })
+  @ApiQuery({ name: "city", required: false, example: "Bishkek" })
+  @ApiOk(VenueListItem, { array: true })
+  @ApiBadRequest("Неизвестный type")
+  listVenues(
     @Query("type", new ParseEnumPipe(VenueType, { optional: true })) type?: VenueType,
     @Query("q") q?: string,
     @Query("city") city?: string,
@@ -20,15 +28,19 @@ export class VenuesController {
         city,
         ...(q?.trim() && { name: { contains: q.trim(), mode: "insensitive" as const } }),
       },
-      omit: { description: true, gallery: true },
+      omit: { description: true, gallery: true, createdAt: true, updatedAt: true },
       orderBy: [{ rating: "desc" }, { name: "asc" }],
     });
   }
 
-  // GET /venues/:slug
   @Get(":slug")
-  async bySlug(@Param("slug") slug: string) {
-    const venue = await this.prisma.venue.findUnique({ where: { slug } });
+  @ApiOk(Venue)
+  @ApiNotFound("Заведение не найдено")
+  async getVenue(@Param("slug") slug: string) {
+    const venue = await this.prisma.venue.findUnique({
+      where: { slug },
+      omit: { createdAt: true, updatedAt: true },
+    });
     if (!venue) throw new NotFoundException("Заведение не найдено");
     return venue;
   }

@@ -7,7 +7,8 @@
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "db:up": "docker compose up -d --wait",
-    "db:seed": "pnpm --filter @vsee/api db:seed"
+    "db:seed": "pnpm --filter @vsee/api db:seed",
+    "api:generate": "pnpm --filter @vsee/api build && pnpm --filter @vsee/api openapi && pnpm --filter @vsee/api-client generate"
   },
   "devDependencies": {
     "turbo": "2.11.10"

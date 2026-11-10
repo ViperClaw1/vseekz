@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  transpilePackages: ["@vsee/api-client"], // workspace-пакет отдаёт исходники TS
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
