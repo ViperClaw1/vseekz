@@ -1,5 +1,5 @@
 // Mutator для orval: все сгенерированные запросы идут через него.
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000";
+const BASE_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000").replace(/\/+$/, "");
 
 /** Ошибка не-2xx ответа. body — тело ответа (ErrorBody из OpenAPI). */
 export class ApiError<B = unknown> extends Error {

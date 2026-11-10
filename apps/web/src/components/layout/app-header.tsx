@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Bell, ChevronDown, MapPin } from "lucide-react";
+import { Bell, ChevronDown, MapPin, Menu } from "lucide-react";
 
 export function AppHeader() {
   return (
@@ -15,9 +15,14 @@ export function AppHeader() {
         <ChevronDown className="size-4" aria-hidden />
       </span>
 
-      <Link href="/notifications" aria-label="Уведомления" className="text-muted-foreground">
-        <Bell className="size-6" />
-      </Link>
+      <div className="flex items-center gap-3 text-muted-foreground">
+        <Link href="/notifications" aria-label="Уведомления">
+          <Bell className="size-6 fill-current" />
+        </Link>
+        <Link href="/profile/settings" aria-label="Меню">
+          <Menu className="size-7" />
+        </Link>
+      </div>
     </header>
   );
 }

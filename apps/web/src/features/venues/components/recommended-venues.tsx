@@ -26,12 +26,12 @@ export function RecommendedVenues() {
       {isPending
         ? Array.from({ length: 3 }, (_, i) => (
             <li key={i} className="shrink-0">
-              <Skeleton className="h-48 w-60 rounded-2xl" />
+              <Skeleton className="h-36 w-48 rounded-xl" />
             </li>
           ))
         : data.slice(0, LIMIT).map((v) => (
             <li key={v.id} className="shrink-0 snap-start">
-              <VenueCard venue={v} className="w-60" />
+              <VenueCard venue={v} className="w-48" />
             </li>
           ))}
     </ul>
