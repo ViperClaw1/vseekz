@@ -1,0 +1,123 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "esm"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// Цены — целые сомы (KGS). ponytail: тыйыны не используем, перейти на minor units если появятся копейки.
+
+enum VenueType {
+  RESTAURANT
+  SALON
+}
+
+model Venue {
+  id           String    @id @default(cuid())
+  slug         String    @unique
+  type         VenueType
+  name         String
+  description  String
+  city         String    @default("Bishkek")
+  address      String
+  lat          Float
+  lng          Float
+  phone        String
+  instagram    String?
+  opensAt      String /// "09:00"
+  closesAt     String /// "22:00"
+  rating       Float     @default(0)
+  reviewsCount Int       @default(0)
+  coverUrl     String?
+  gallery      String[]
+  promo        String? /// «-20% на всё меню с 12:00 до 16:00»
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  menuCategories    MenuCategory[]
+  products          Product[]
+  serviceCategories ServiceCategory[]
+  services          Service[]
+  masters           Master[]
+
+  @@index([type, city])
+}
+
+model MenuCategory {
+  id       String    @id @default(cuid())
+  venueId  String
+  venue    Venue     @relation(fields: [venueId], references: [id], onDelete: Cascade)
+  name     String
+  sort     Int       @default(0)
+  products Product[]
+
+  @@unique([venueId, name])
+}
+
+model Product {
+  id          String       @id @default(cuid())
+  venueId     String
+  venue       Venue        @relation(fields: [venueId], references: [id], onDelete: Cascade)
+  categoryId  String
+  category    MenuCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  name        String
+  description String
+  price       Int
+  weight      String? /// «350 г», «0.5 л»
+  imageUrl    String?
+  isAvailable Boolean      @default(true)
+  sort        Int          @default(0)
+  modifiers   Modifier[]
+
+  @@index([venueId, categoryId])
+}
+
+/// «Добавить к заказу»: Халапенью +10 сом, Сыр +70 сом
+model Modifier {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  name      String
+  price     Int
+}
+
+model ServiceCategory {
+  id       String    @id @default(cuid())
+  venueId  String
+  venue    Venue     @relation(fields: [venueId], references: [id], onDelete: Cascade)
+  name     String
+  sort     Int       @default(0)
+  services Service[]
+
+  @@unique([venueId, name])
+}
+
+model Service {
+  id          String          @id @default(cuid())
+  venueId     String
+  venue       Venue           @relation(fields: [venueId], references: [id], onDelete: Cascade)
+  categoryId  String
+  category    ServiceCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  name        String
+  description String?
+  price       Int
+  durationMin Int
+  sort        Int             @default(0)
+  masters     Master[]
+
+  @@index([venueId, categoryId])
+}
+
+model Master {
+  id        String    @id @default(cuid())
+  venueId   String
+  venue     Venue     @relation(fields: [venueId], references: [id], onDelete: Cascade)
+  name      String
+  specialty String
+  avatarUrl String?
+  rating    Float     @default(0)
+  services  Service[]
+}

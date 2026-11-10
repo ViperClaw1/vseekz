@@ -182,7 +182,9 @@ apps/api/
 ├─ prisma/
 │  ├─ schema.prisma
 │  ├─ migrations/                      # + raw SQL: pg_trgm, btree_gist EXCLUDE
-│  └─ seed.ts
+│  ├─ seed-data.mjs                    # fixtures → плоские строки + проверка целостности (без БД)
+│  └─ seed.mjs                         # заливка в Postgres, идемпотентно
+├─ prisma.config.ts                    # Prisma 7: datasource url, seed-команда
 ├─ src/
 │  ├─ main.ts                          # Swagger → openapi.json → packages/api-client
 │  ├─ app.module.ts
@@ -215,7 +217,9 @@ apps/api/
 ## packages/shared
 
 ```
-packages/shared/src/
+packages/shared/
+├─ fixtures/         # restaurants.json (меню, модификаторы), salons.json (услуги, мастера)
+└─ src/              # (позже)
 ├─ enums.ts          # VenueType, Currency(KGS), BookingType, BookingStatus, NotificationType
 ├─ schemas/          # auth venue menu hall salon booking cart review profile
 └─ index.ts

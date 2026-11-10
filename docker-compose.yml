@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: vsee
+      POSTGRES_PASSWORD: vsee
+      POSTGRES_DB: vsee
+    # 5433 снаружи, чтобы не конфликтовать с локально установленным Postgres.
+    # DATABASE_URL="postgresql://vsee:vsee@localhost:5433/vsee"
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vsee"]
+      interval: 2s
+      retries: 15
+
+volumes:
+  pgdata:

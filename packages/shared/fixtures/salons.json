@@ -1,0 +1,137 @@
+[
+  {
+    "id": "s-beauty-room",
+    "slug": "beauty-room",
+    "name": "Beauty Room",
+    "description": "Здесь заботятся о вашей красоте и настроении. Уютная атмосфера, стерильные инструменты и мастера с опытом от 5 лет.",
+    "address": "Бишкек, пр. Манаса, 40",
+    "lat": 42.8653,
+    "lng": 74.5862,
+    "phone": "+996 555 404 040",
+    "instagram": "beautyroom.kg",
+    "opensAt": "09:00",
+    "closesAt": "21:00",
+    "rating": 4.7,
+    "reviewsCount": 15,
+    "promo": "-15% на первое посещение",
+    "serviceCategories": [
+      {
+        "id": "s-br-cat-manicure",
+        "name": "Маникюр",
+        "services": [
+          { "id": "s-br-manicure-classic", "name": "Классический маникюр", "price": 600, "durationMin": 60 },
+          { "id": "s-br-manicure-gel", "name": "Укрепление + покрытие + дизайн", "price": 1600, "durationMin": 120, "description": "Укрепление гелем, покрытие гель-лаком, дизайн на 2 ногтя." },
+          { "id": "s-br-manicure-removal", "name": "Снятие старого покрытия", "price": 345, "durationMin": 20 }
+        ]
+      },
+      {
+        "id": "s-br-cat-pedicure",
+        "name": "Педикюр",
+        "services": [
+          { "id": "s-br-pedicure-classic", "name": "Классический педикюр", "price": 900, "durationMin": 75 },
+          { "id": "s-br-pedicure-gel", "name": "Педикюр с покрытием", "price": 1400, "durationMin": 100 }
+        ]
+      },
+      {
+        "id": "s-br-cat-brows",
+        "name": "Брови и ресницы",
+        "services": [
+          { "id": "s-br-brows-shape", "name": "Коррекция и окрашивание бровей", "price": 700, "durationMin": 45 },
+          { "id": "s-br-lashes-lami", "name": "Ламинирование ресниц", "price": 1500, "durationMin": 60 }
+        ]
+      }
+    ],
+    "masters": [
+      { "id": "s-br-maria", "name": "Мария", "specialty": "Мастер маникюра и педикюра", "rating": 4.8, "services": ["s-br-manicure-classic", "s-br-manicure-gel", "s-br-manicure-removal", "s-br-pedicure-classic", "s-br-pedicure-gel"] },
+      { "id": "s-br-aizhan", "name": "Айжан", "specialty": "Мастер маникюра", "rating": 4.6, "services": ["s-br-manicure-classic", "s-br-manicure-gel", "s-br-manicure-removal"] },
+      { "id": "s-br-elena", "name": "Елена", "specialty": "Бровист, лэшмейкер", "rating": 4.9, "services": ["s-br-brows-shape", "s-br-lashes-lami"] }
+    ]
+  },
+  {
+    "id": "s-barber-bros",
+    "slug": "barber-bros",
+    "name": "Barber Bros",
+    "description": "Мужские стрижки, бритьё опасной бритвой и уход за бородой.",
+    "address": "Бишкек, ул. Киевская, 77",
+    "lat": 42.8744,
+    "lng": 74.6012,
+    "phone": "+996 700 777 077",
+    "instagram": "barberbros.kg",
+    "opensAt": "10:00",
+    "closesAt": "22:00",
+    "rating": 4.9,
+    "reviewsCount": 64,
+    "promo": null,
+    "serviceCategories": [
+      {
+        "id": "s-bb-cat-haircut",
+        "name": "Стрижки",
+        "services": [
+          { "id": "s-bb-haircut", "name": "Мужская стрижка", "price": 800, "durationMin": 45 },
+          { "id": "s-bb-haircut-kids", "name": "Детская стрижка", "price": 600, "durationMin": 30 },
+          { "id": "s-bb-buzz", "name": "Стрижка машинкой", "price": 500, "durationMin": 20 }
+        ]
+      },
+      {
+        "id": "s-bb-cat-beard",
+        "name": "Борода",
+        "services": [
+          { "id": "s-bb-beard", "name": "Моделирование бороды", "price": 600, "durationMin": 30 },
+          { "id": "s-bb-shave", "name": "Королевское бритьё", "price": 900, "durationMin": 45 }
+        ]
+      }
+    ],
+    "masters": [
+      { "id": "s-bb-timur", "name": "Тимур", "specialty": "Топ-барбер", "rating": 4.9, "services": ["s-bb-haircut", "s-bb-buzz", "s-bb-beard", "s-bb-shave"] },
+      { "id": "s-bb-azamat", "name": "Азамат", "specialty": "Барбер", "rating": 4.7, "services": ["s-bb-haircut", "s-bb-haircut-kids", "s-bb-buzz", "s-bb-beard"] }
+    ]
+  },
+  {
+    "id": "s-skin-lab",
+    "slug": "skin-lab",
+    "name": "Skin Lab",
+    "description": "Косметология и уход за кожей лица и тела. Подбор домашнего ухода после процедуры.",
+    "address": "Бишкек, ул. Боконбаева, 120",
+    "lat": 42.8711,
+    "lng": 74.6152,
+    "phone": "+996 551 120 120",
+    "instagram": null,
+    "opensAt": "09:00",
+    "closesAt": "20:00",
+    "rating": 4.4,
+    "reviewsCount": 9,
+    "promo": null,
+    "serviceCategories": [
+      {
+        "id": "s-sl-cat-face",
+        "name": "Уход за кожей",
+        "services": [
+          { "id": "s-sl-cleaning", "name": "Комбинированная чистка лица", "price": 2200, "durationMin": 90 },
+          { "id": "s-sl-peeling", "name": "Пилинг", "price": 1800, "durationMin": 45 },
+          { "id": "s-sl-mask", "name": "Увлажняющий уход", "price": 1500, "durationMin": 60 }
+        ]
+      },
+      {
+        "id": "s-sl-cat-body",
+        "name": "Уход за телом",
+        "services": [
+          { "id": "s-sl-massage", "name": "Массаж спины", "price": 1600, "durationMin": 40 },
+          { "id": "s-sl-wrap", "name": "Обёртывание", "price": 2500, "durationMin": 60 }
+        ]
+      },
+      {
+        "id": "s-sl-cat-makeup",
+        "name": "Макияж",
+        "services": [
+          { "id": "s-sl-makeup-day", "name": "Дневной макияж", "price": 1500, "durationMin": 45 },
+          { "id": "s-sl-makeup-evening", "name": "Вечерний макияж", "price": 2500, "durationMin": 75 }
+        ]
+      }
+    ],
+    "masters": [
+      { "id": "s-sl-dinara", "name": "Динара", "specialty": "Косметолог", "rating": 4.6, "services": ["s-sl-cleaning", "s-sl-peeling", "s-sl-mask"] },
+      { "id": "s-sl-aliya", "name": "Алия", "specialty": "Массажист", "rating": 4.3, "services": ["s-sl-massage", "s-sl-wrap"] },
+      { "id": "s-sl-kamila", "name": "Камила", "specialty": "Визажист", "rating": 4.5, "services": ["s-sl-makeup-day", "s-sl-makeup-evening"] }
+    ]
+  }
+]

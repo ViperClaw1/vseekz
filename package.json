@@ -5,7 +5,9 @@
     "dev": "turbo run dev",
     "build": "turbo run build",
     "lint": "turbo run lint",
-    "typecheck": "turbo run typecheck"
+    "typecheck": "turbo run typecheck",
+    "db:up": "docker compose up -d --wait",
+    "db:seed": "pnpm --filter @vsee/api db:seed"
   },
   "devDependencies": {
     "turbo": "2.11.10"

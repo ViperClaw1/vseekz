@@ -1,0 +1,181 @@
+[
+  {
+    "id": "r-chaikhana-bereke",
+    "slug": "chaikhana-bereke",
+    "name": "Чайхана Береке",
+    "description": "Уютная чайхана с национальной кухней: плов из казана, лагман ручной тяжки и самса из тандыра. Идеальное место для семейных ужинов и встреч с друзьями.",
+    "address": "Бишкек, ул. Абдрахманова, 115",
+    "lat": 42.8771,
+    "lng": 74.6105,
+    "phone": "+996 555 120 115",
+    "instagram": "bereke.kg",
+    "opensAt": "09:00",
+    "closesAt": "23:00",
+    "rating": 4.8,
+    "reviewsCount": 15,
+    "promo": "-20% на всё меню с 12:00 до 16:00",
+    "menu": [
+      {
+        "id": "r-bereke-cat-hot",
+        "name": "Горячие блюда",
+        "products": [
+          { "id": "r-bereke-plov", "name": "Плов чайханский", "description": "Рис девзира, баранина, жёлтая морковь, нут и чеснок из казана.", "price": 380, "weight": "350 г", "modifiers": [{ "name": "Перепелиное яйцо", "price": 40 }, { "name": "Казы", "price": 150 }] },
+          { "id": "r-bereke-lagman", "name": "Лагман гуйру", "description": "Лапша ручной тяжки с говядиной и овощами.", "price": 340, "weight": "400 г", "modifiers": [{ "name": "Двойная лапша", "price": 80 }] },
+          { "id": "r-bereke-manty", "name": "Манты с бараниной", "description": "Пять штук, подаются со сметаной.", "price": 320, "weight": "5 шт." }
+        ]
+      },
+      {
+        "id": "r-bereke-cat-soups",
+        "name": "Супы",
+        "products": [
+          { "id": "r-bereke-shorpo", "name": "Шорпо", "description": "Наваристый бульон из баранины с картофелем и морковью.", "price": 290, "weight": "400 мл" },
+          { "id": "r-bereke-mastava", "name": "Мастава", "description": "Рисовый суп с говядиной и томатами.", "price": 270, "weight": "400 мл" }
+        ]
+      },
+      {
+        "id": "r-bereke-cat-bakery",
+        "name": "Выпечка",
+        "products": [
+          { "id": "r-bereke-samsa", "name": "Самса из тандыра", "description": "Слоёное тесто, рубленая говядина, лук.", "price": 120, "weight": "1 шт." },
+          { "id": "r-bereke-lepeshka", "name": "Лепёшка", "description": "Горячая тандырная лепёшка с кунжутом.", "price": 45, "weight": "1 шт." }
+        ]
+      },
+      {
+        "id": "r-bereke-cat-drinks",
+        "name": "Напитки",
+        "products": [
+          { "id": "r-bereke-tea", "name": "Чай зелёный", "description": "Чайник, 800 мл.", "price": 90, "weight": "800 мл", "modifiers": [{ "name": "Лимон", "price": 20 }, { "name": "Мёд", "price": 40 }] },
+          { "id": "r-bereke-maksym", "name": "Максым", "description": "Традиционный злаковый напиток.", "price": 70, "weight": "0.5 л" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r-burger-lab",
+    "slug": "burger-lab",
+    "name": "Burger Lab",
+    "description": "Бургерная с котлетами из мраморной говядины, домашними соусами и крафтовыми лимонадами.",
+    "address": "Бишкек, ул. Исы Ахунбаева, 100",
+    "lat": 42.8452,
+    "lng": 74.6021,
+    "phone": "+996 700 450 100",
+    "instagram": "burgerlab.kg",
+    "opensAt": "11:00",
+    "closesAt": "00:00",
+    "rating": 4.6,
+    "reviewsCount": 42,
+    "promo": null,
+    "menu": [
+      {
+        "id": "r-burger-cat-burgers",
+        "name": "Бургеры",
+        "products": [
+          { "id": "r-burger-chef", "name": "Бургер от шефа", "description": "Говяжья котлета 180 г, чеддер, карамелизированный лук, фирменный соус.", "price": 345, "weight": "320 г", "modifiers": [{ "name": "Халапеньо 4 шт.", "price": 10 }, { "name": "Сыр", "price": 70 }, { "name": "Огурцы", "price": 20 }, { "name": "Бекон", "price": 90 }] },
+          { "id": "r-burger-double", "name": "Дабл чиз", "description": "Две котлеты, двойной чеддер, маринованные огурцы.", "price": 480, "weight": "420 г", "modifiers": [{ "name": "Халапеньо 4 шт.", "price": 10 }, { "name": "Бекон", "price": 90 }] },
+          { "id": "r-burger-chicken", "name": "Чикен бургер", "description": "Хрустящее куриное филе, салат айсберг, соус ранч.", "price": 310, "weight": "300 г", "modifiers": [{ "name": "Сыр", "price": 70 }] }
+        ]
+      },
+      {
+        "id": "r-burger-cat-sides",
+        "name": "Закуски",
+        "products": [
+          { "id": "r-burger-fries", "name": "Картофель фри", "description": "С солью и паприкой.", "price": 140, "weight": "150 г", "modifiers": [{ "name": "Сырный соус", "price": 40 }] },
+          { "id": "r-burger-nuggets", "name": "Наггетсы", "description": "Восемь штук, соус на выбор.", "price": 220, "weight": "8 шт." }
+        ]
+      },
+      {
+        "id": "r-burger-cat-drinks",
+        "name": "Напитки",
+        "products": [
+          { "id": "r-burger-lemonade", "name": "Лимонад маракуйя", "description": "Домашний лимонад.", "price": 160, "weight": "0.4 л" },
+          { "id": "r-burger-shake", "name": "Молочный коктейль", "description": "Ваниль, шоколад или клубника.", "price": 190, "weight": "0.4 л" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r-pizza-forno",
+    "slug": "pizza-forno",
+    "name": "Pizza Forno",
+    "description": "Неаполитанская пицца из дровяной печи, свежая паста и итальянские десерты.",
+    "address": "Бишкек, пр. Чуй, 155",
+    "lat": 42.8767,
+    "lng": 74.6033,
+    "phone": "+996 777 155 155",
+    "instagram": "forno.bishkek",
+    "opensAt": "10:00",
+    "closesAt": "23:00",
+    "rating": 4.7,
+    "reviewsCount": 87,
+    "promo": "Вторая пицца -50% по будням",
+    "menu": [
+      {
+        "id": "r-forno-cat-pizza",
+        "name": "Пицца",
+        "products": [
+          { "id": "r-forno-margherita", "name": "Маргарита", "description": "Томатный соус, моцарелла фиор ди латте, базилик.", "price": 520, "weight": "30 см", "modifiers": [{ "name": "Двойная моцарелла", "price": 120 }] },
+          { "id": "r-forno-pepperoni", "name": "Пепперони", "description": "Томатный соус, моцарелла, пикантная пепперони.", "price": 610, "weight": "30 см", "modifiers": [{ "name": "Халапеньо", "price": 40 }, { "name": "Двойная моцарелла", "price": 120 }] },
+          { "id": "r-forno-quattro", "name": "Четыре сыра", "description": "Моцарелла, горгонзола, пармезан, дор блю.", "price": 690, "weight": "30 см" }
+        ]
+      },
+      {
+        "id": "r-forno-cat-salads",
+        "name": "Салаты",
+        "products": [
+          { "id": "r-forno-caesar", "name": "Цезарь с курицей", "description": "Романо, курица гриль, пармезан, гренки.", "price": 390, "weight": "250 г", "modifiers": [{ "name": "Креветки вместо курицы", "price": 150 }] },
+          { "id": "r-forno-caprese", "name": "Капрезе", "description": "Томаты, моцарелла, песто.", "price": 360, "weight": "220 г" }
+        ]
+      },
+      {
+        "id": "r-forno-cat-desserts",
+        "name": "Десерты",
+        "products": [
+          { "id": "r-forno-tiramisu", "name": "Тирамису", "description": "Классический рецепт с маскарпоне.", "price": 290, "weight": "150 г" },
+          { "id": "r-forno-pannacotta", "name": "Панна-котта", "description": "Со смородиновым соусом.", "price": 250, "weight": "150 г" }
+        ]
+      },
+      {
+        "id": "r-forno-cat-soups",
+        "name": "Супы",
+        "products": [
+          { "id": "r-forno-minestrone", "name": "Минестроне", "description": "Овощной суп с пастой.", "price": 280, "weight": "300 мл" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r-sushi-kame",
+    "slug": "sushi-kame",
+    "name": "Sushi Kame",
+    "description": "Японская кухня: роллы, поке и рамен. Свежая рыба каждый день.",
+    "address": "Бишкек, ул. Токтогула, 89",
+    "lat": 42.8705,
+    "lng": 74.5945,
+    "phone": "+996 552 890 089",
+    "instagram": null,
+    "opensAt": "12:00",
+    "closesAt": "23:30",
+    "rating": 4.5,
+    "reviewsCount": 23,
+    "promo": null,
+    "menu": [
+      {
+        "id": "r-kame-cat-rolls",
+        "name": "Роллы",
+        "products": [
+          { "id": "r-kame-philadelphia", "name": "Филадельфия", "description": "Лосось, сливочный сыр, огурец.", "price": 560, "weight": "8 шт.", "modifiers": [{ "name": "Имбирь и васаби x2", "price": 30 }] },
+          { "id": "r-kame-california", "name": "Калифорния", "description": "Краб, авокадо, икра масаго.", "price": 480, "weight": "8 шт." },
+          { "id": "r-kame-dragon", "name": "Дракон", "description": "Угорь, авокадо, соус унаги.", "price": 640, "weight": "8 шт." }
+        ]
+      },
+      {
+        "id": "r-kame-cat-hot",
+        "name": "Горячее",
+        "products": [
+          { "id": "r-kame-ramen", "name": "Рамен с курицей", "description": "Куриный бульон, лапша, яйцо аджитама.", "price": 420, "weight": "450 мл", "modifiers": [{ "name": "Дополнительное яйцо", "price": 50 }, { "name": "Острый соус", "price": 20 }] },
+          { "id": "r-kame-poke", "name": "Поке с лососем", "description": "Рис, лосось, эдамаме, авокадо, соус понзу.", "price": 520, "weight": "320 г" }
+        ]
+      }
+    ]
+  }
+]
