@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "nest start --watch",
-    "build": "nest build",
+    "build": "prisma generate && nest build",
     "start": "node dist/main.js",
     "openapi": "node dist/emit-openapi.js ../../packages/api-client/openapi.json",
     "postinstall": "prisma generate",
@@ -37,5 +37,8 @@
     "@types/pg": "^8.23.1",
     "prisma": "7.10.1",
     "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": "24.x"
   }
 }
