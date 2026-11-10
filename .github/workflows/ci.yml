@@ -63,3 +63,7 @@ jobs:
       - name: Seeded rows match fixtures
         working-directory: apps/api
         run: bash scripts/check-seed.sh
+
+      - name: API e2e (dist из шага build + засиженная БД)
+        working-directory: apps/api
+        run: pnpm test:e2e
