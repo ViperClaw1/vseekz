@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: vsee
+          POSTGRES_PASSWORD: vsee
+          POSTGRES_DB: vsee
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U vsee"
+          --health-interval 2s
+          --health-retries 15
+
+    env:
+      DATABASE_URL: postgresql://vsee:vsee@localhost:5432/vsee
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v5 # версия pnpm берётся из packageManager
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile # postinstall api → prisma generate
+
+      - name: Typecheck, lint, unit tests, build
+        run: pnpm turbo run typecheck lint test build
+
+      - name: Apply migrations
+        working-directory: apps/api
+        run: pnpm exec prisma migrate deploy
+
+      - name: Schema has no unmigrated changes
+        working-directory: apps/api
+        run: pnpm exec prisma migrate diff --from-config-datasource --to-schema prisma/schema.prisma --exit-code
+
+      - name: Seed twice (idempotency)
+        working-directory: apps/api
+        run: |
+          pnpm exec prisma db seed
+          pnpm exec prisma db seed
+
+      - name: Seeded rows match fixtures
+        working-directory: apps/api
+        run: bash scripts/check-seed.sh
